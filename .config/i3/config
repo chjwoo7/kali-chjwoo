@@ -52,7 +52,7 @@ bindsym $mod+Mod1+s move scratchpad
 bindsym $mod+Tab workspace back_and_forth
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Mod1+space floating toggle
 
 # Move and resize floating windows with the mouse.
 bindsym $mod+button1 move
