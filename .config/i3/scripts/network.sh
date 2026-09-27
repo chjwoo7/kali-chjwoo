@@ -2,12 +2,12 @@
 
 iface=${BLOCK_INSTANCE:-tun0}
 case "$iface" in
-    *[!a-zA-Z0-9_.:-]*|'') printf 'NET: interface invalid\n'; exit 0 ;;
+    *[!a-zA-Z0-9_.:-]*|'') printf '<span size="11pt"><b>NET</b>: interface invalid</span>\n'; exit 0 ;;
 esac
 
 stats="/sys/class/net/$iface/statistics"
 if [ ! -r "$stats/rx_bytes" ] || [ ! -r "$stats/tx_bytes" ]; then
-    printf 'NET %s down\n' "$iface"
+    printf '<span size="11pt"><b>NET</b> %s down</span>\n' "$iface"
     exit 0
 fi
 
@@ -32,5 +32,5 @@ else
     tx_rate=0
 fi
 
-printf 'NET ↓%sK/s ↑%sK/s\n' "$rx_rate" "$tx_rate"
+printf '<span size="11pt"><b>NET</b> ↓%sK/s ↑%sK/s</span>\n' "$rx_rate" "$tx_rate"
 printf '%s %s %s\n' "$rx" "$tx" "$now" > "$state_file"

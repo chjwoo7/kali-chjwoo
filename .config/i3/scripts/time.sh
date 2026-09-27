@@ -1,3 +1,3 @@
 #!/bin/sh
 
-printf ' %s&#8194;&#8194;\n' "$(date '+%A, %d %B %Y  %H:%M:%S')"
+printf '<span size="11pt"> %s&#8194;&#8194;</span>\n' "$(date '+%A, %d %B %Y  %H:%M:%S')"

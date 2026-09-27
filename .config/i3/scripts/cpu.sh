@@ -13,12 +13,12 @@ if [ -r "$state_file" ]; then
     idle_delta=$((idle_total - previous_idle))
     if [ "$total_delta" -gt 0 ]; then
         usage=$((100 * (total_delta - idle_delta) / total_delta))
-        printf 'CPU %s%%\n' "$usage"
+        printf '<span size="11pt"><b>CPU</b> %s%%</span>\n' "$usage"
     else
-        printf 'CPU --\n'
+        printf '<span size="11pt"><b>CPU</b> --</span>\n'
     fi
 else
-    printf 'CPU --\n'
+    printf '<span size="11pt"><b>CPU</b> --</span>\n'
 fi
 
 printf '%s %s\n' "$total" "$idle_total" > "$state_file"
