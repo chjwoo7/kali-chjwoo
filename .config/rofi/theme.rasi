@@ -1,0 +1,105 @@
+* {
+    bg:             #1C1D2B;
+    bg-alt:         #292B3D;
+    fg:             #E6FFF5;
+    muted:          #8A91A8;
+    accent:         #82C8FF;
+    urgent:         #C74747;
+
+    background-color: @bg;
+    text-color:       @fg;
+    font:             "JetBrains Mono Nerd Font 12";
+}
+
+window {
+    width:            42%;
+    border:           2px;
+    border-color:     @accent;
+    border-radius:    10px;
+    background-color: @bg;
+    padding:          20px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing:          14px;
+    children:         [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    7px;
+    padding:          12px 14px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @accent;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg;
+    placeholder:      "Search applications…";
+    placeholder-color: @muted;
+}
+
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            8;
+    fixed-height:     false;
+    scrollbar:        false;
+    spacing:          5px;
+}
+
+element {
+    background-color: transparent;
+    border-radius:    6px;
+    padding:          9px 12px;
+    spacing:          10px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color:       @bg;
+}
+
+element urgent.normal {
+    background-color: @urgent;
+    text-color:       @fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             1.25em;
+}
+
+message {
+    background-color: @bg-alt;
+    border-radius:    6px;
+    padding:          10px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @muted;
+}
