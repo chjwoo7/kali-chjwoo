@@ -1,0 +1,13 @@
+# Local/editor files and machine-specific state
+.DS_Store
+*.swp
+*.swo
+*.bak
+
+# Keep credentials and shell history out of this public dotfiles repo
+.env
+.env.*
+*.pem
+*.key
+id_*
+
