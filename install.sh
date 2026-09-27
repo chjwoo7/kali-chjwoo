@@ -64,6 +64,7 @@ check_dependencies() {
         vmtoolsd:open-vm-tools-desktop \
         tmux:tmux \
         zsh:zsh \
+        fzf:fzf \
         xclip:xclip
     do
         command_name=${pair%%:*}
@@ -132,5 +133,6 @@ link_config .config/picom
 link_config .config/alacritty
 link_config .config/kitty
 link_config .tmux.conf
+link_config .zshrc
 link_config .wallpaper
 link_config .fehbg
