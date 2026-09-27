@@ -61,7 +61,10 @@ check_dependencies() {
         thunar:thunar \
         wpctl:pipewire-bin \
         firefox:firefox-esr \
-        vmtoolsd:open-vm-tools-desktop
+        vmtoolsd:open-vm-tools-desktop \
+        tmux:tmux \
+        zsh:zsh \
+        xclip:xclip
     do
         command_name=${pair%%:*}
         package_name=${pair#*:}
@@ -128,5 +131,6 @@ link_config .config/rofi
 link_config .config/picom
 link_config .config/alacritty
 link_config .config/kitty
+link_config .tmux.conf
 link_config .wallpaper
 link_config .fehbg

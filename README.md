@@ -10,6 +10,7 @@ used on my machine.
 - Rofi application launcher
 - Minimal Picom configuration using XRender, with animations and visual effects disabled for responsiveness in VMware
 - Kitty terminal settings adapted from my end4-based `dots-chjwoo` config
+- Tmux configuration with a Ctrl+A prefix
 - Alacritty terminal settings
 - Wallpaper and the VMware clipboard helper
 
@@ -28,6 +29,16 @@ without flags to review and accept or skip missing packages interactively; use
 the installer moves it into `~/.local/share/kali-chjwoo-backup/<timestamp>/`
 first. Log out and choose i3 from the login screen, or restart i3 after
 installing.
+
+The installer links `.tmux.conf` and installs tmux, zsh, and xclip when needed.
+Install the tmux plugin manager once, then install its configured plugins:
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux
+```
+
+Inside tmux, press `Ctrl+A`, then `I` (capital i) to install the plugins.
 
 Picom uses a minimal XRender configuration because compositing adds noticeable
 overhead in this VMware guest. The installer includes `open-vm-tools-desktop`
