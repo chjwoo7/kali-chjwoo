@@ -21,8 +21,8 @@ bindsym $mod+e exec thunar
 # kill focused window
 bindsym $mod+q kill
 
-# launcher (Super alone opens the end4 launcher; Super+Space is the i3 equivalent)
-bindsym $mod+space exec "rofi -show drun"
+# Launch the app menu when Super is released on its own.
+bindsym --release $mod exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+Left focus left
