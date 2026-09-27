@@ -1,2 +1,12 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill ~/.wallpaper/wallpaper.png
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/kali-chjwoo"
+wallpaper_file="$state_dir/wallpaper"
+wallpaper="$HOME/.wallpaper/wallpaper.png"
+
+if [ -r "$wallpaper_file" ]; then
+    IFS= read -r wallpaper < "$wallpaper_file"
+fi
+
+[ -f "$wallpaper" ] || wallpaper="$HOME/.wallpaper/wallpaper.png"
+feh --no-fehbg --bg-fill "$wallpaper"

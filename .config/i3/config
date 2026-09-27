@@ -15,6 +15,7 @@ bindsym $mod+t exec $term
 
 # apps (matching the main end4 shortcuts)
 bindsym $mod+w exec firefox
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/i3/scripts/wallpaper.sh
 bindsym $mod+e exec thunar
 
 # kill focused window
