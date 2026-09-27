@@ -1,41 +1,35 @@
 
 set $mod Mod4
+set $term kitty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:RobotoMono Nerd Font Regular 9
+font pango:JetBrains Mono Nerd Font Regular 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term
+bindsym $mod+t exec $term
+
+# apps (matching the main end4 shortcuts)
+bindsym $mod+w exec firefox
+bindsym $mod+e exec thunar
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -show run"
+# launcher (Super alone opens the end4 launcher; Super+Space is the i3 equivalent)
+bindsym $mod+space exec "rofi -show drun"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -48,24 +42,19 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
+bindsym $mod+d fullscreen toggle
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# scratchpad and previous workspace
+bindsym $mod+s scratchpad show
+bindsym $mod+Mod1+s move scratchpad
+bindsym $mod+Tab workspace back_and_forth
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Mod1+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -79,17 +68,31 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# move between existing neighboring workspaces
+bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Mod1+1 move container to workspace 1
+bindsym $mod+Mod1+2 move container to workspace 2
+bindsym $mod+Mod1+3 move container to workspace 3
+bindsym $mod+Mod1+4 move container to workspace 4
+bindsym $mod+Mod1+5 move container to workspace 5
+bindsym $mod+Mod1+6 move container to workspace 6
+bindsym $mod+Mod1+7 move container to workspace 7
+bindsym $mod+Mod1+8 move container to workspace 8
+bindsym $mod+Mod1+9 move container to workspace 9
+bindsym $mod+Mod1+0 move container to workspace 10
+
+# move focused container to the neighboring workspace
+bindsym $mod+Shift+Prior move container to workspace prev
+bindsym $mod+Shift+Next move container to workspace next
+
+# lock and suspend
+bindsym $mod+l exec i3lock -c 1C1D2B
+bindsym $mod+Shift+l exec systemctl suspend
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -122,15 +125,19 @@ bindsym $mod+r mode "resize"
 # i3bar with i3blocks
 bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        i3bar_command i3bar -t
+        i3bar_command i3bar
         position top
-        height 26
-        font pango:RobotoMono Nerd Font Regular 7.5
+        height 40
+        workspace_min_width 40
+        font pango:JetBrains Mono Nerd Font Regular 12
         colors {
-            statusline #EEEEEE
-            background #1C1D2B88
-            focused_workspace #282A3E88 #282A3E88 #FFFFFF
-            statusline #E6FFF5
+            background #000000
+            statusline #E6E6E6
+            focused_workspace #292929 #292929 #FFFFFF
+            active_workspace #181818 #181818 #D0D0D0
+            inactive_workspace #000000 #000000 #929292
+            urgent_workspace #C74747 #C74747 #FFFFFF
+            binding_mode #C74747 #C74747 #FFFFFF
         }
 }
 
@@ -148,8 +155,8 @@ default_border normal
 # feh - Wallpaper Setter
 exec_always --no-startup-id sh ~/.fehbg
 
-# compton - Compositing Manager for Shadows and Opacity
-exec_always --no-startup-id compton -b --config ~/.config/compton/compton.conf
+# Picom with a minimal XRender setup for VMware responsiveness.
+exec --no-startup-id picom --config ~/.config/picom/picom.conf --backend xrender --daemon
 
 # VM Clipboard Fix
 exec_always --no-startup-id ~/.config/i3/clipboard_fix.sh
@@ -161,4 +168,10 @@ bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
 bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 
 # screenshot
-bindsym $mod+P exec flameshot gui
+bindsym $mod+Shift+s exec flameshot gui
+bindsym Print exec flameshot gui
+
+# volume keys
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1.5
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle

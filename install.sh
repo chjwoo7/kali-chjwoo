@@ -27,8 +27,8 @@ link_config() {
 
 link_config .config/i3
 link_config .config/rofi
-link_config .config/compton
+link_config .config/picom
 link_config .config/alacritty
+link_config .config/kitty
 link_config .wallpaper
 link_config .fehbg
-
