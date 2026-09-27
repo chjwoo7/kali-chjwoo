@@ -159,6 +159,9 @@ exec_always --no-startup-id sh ~/.fehbg
 # Picom with a minimal XRender setup for VMware responsiveness.
 exec --no-startup-id picom --config ~/.config/picom/picom.conf --backend xrender --daemon
 
+# Apply VMware's newly preferred guest resolution when its window is resized.
+exec --no-startup-id ~/.config/i3/scripts/vmware-resize-watch.sh
+
 # VM Clipboard Fix
 exec_always --no-startup-id ~/.config/i3/clipboard_fix.sh
 
