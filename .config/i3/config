@@ -21,9 +21,8 @@ bindsym $mod+e exec thunar
 # kill focused window
 bindsym $mod+q kill
 
-# Launch the app menu when either Super key is released on its own.
-bindsym --release Super_L exec --no-startup-id rofi -show drun
-bindsym --release Super_R exec --no-startup-id rofi -show drun
+# Launch the app menu.
+bindsym $mod+space exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+Left focus left
@@ -54,6 +53,10 @@ bindsym $mod+Tab workspace back_and_forth
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# Move and resize floating windows with the mouse.
+bindsym $mod+button1 move
+bindsym $mod+button3 resize
 
 # focus the parent container
 bindsym $mod+a focus parent
