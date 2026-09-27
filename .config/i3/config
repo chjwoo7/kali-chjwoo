@@ -53,7 +53,7 @@ bindsym $mod+Mod1+s move scratchpad
 bindsym $mod+Tab workspace back_and_forth
 
 # toggle tiling / floating
-bindsym $mod+Mod1+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
