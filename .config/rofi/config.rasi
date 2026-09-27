@@ -5,6 +5,7 @@ configuration {
     matching:               "fuzzy";
     auto-select:            false;
     show-icons:             true;
+    display-drun:           "";
     levenshtein-sort:       true;
     separator-style:        "solid";
 
